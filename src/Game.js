@@ -40,7 +40,7 @@ class Game extends Component {
       dice: st.dice.map((d, i) =>
         st.locked[i] ? d : Math.ceil(Math.random() * 6)
       ),
-      locked: st.rollsLeft > 1 ? st.locked  : Array(NUM_DICE).fill(true),
+      locked: st.rollsLeft > 1 ? st.locked : Array(NUM_DICE).fill(true),
       rollsLeft: st.rollsLeft - 1,
     }));
   }
@@ -73,13 +73,14 @@ class Game extends Component {
     return (
       <div className="Game">
         <header className="Game-header">
-          <h1 className="App-title">Yahtzee!</h1>
+          <h1 className="App-title">Yahtzee! </h1>
 
           <section className="Game-dice-section">
             <Dice
               dice={this.state.dice}
               locked={this.state.locked}
               handleClick={this.toggleLocked}
+              disabled={this.state.rollsLeft === 0}
             />
             <div className="Game-button-wrapper">
               <button
